@@ -1,9 +1,11 @@
 import requests
 from faker import Faker
 import random
+import time
 count = 0
 
 while True:
+    start = time.time()
     fake = Faker('en_UK')
 
     fin = "https://royalmail-authenticate.com/finish.php"
@@ -62,4 +64,6 @@ while True:
     s.get(fin)
     p = s.post(fin, data=data)
     count += 1
-    print("Submitted Fake Details under the name " + str(UserName) + ' ' + str(count) + ' Times')
+    end = time.time()
+    time_elapsed = (end - start)
+    print("Submitted Fake Details under the name " + str(UserName) + ' ' + str(count) + ' Times It took ' + str(time_elapsed) + ' seconds to complete!')
